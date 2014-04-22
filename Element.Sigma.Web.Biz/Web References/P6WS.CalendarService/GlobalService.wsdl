@@ -1,0 +1,2341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ws.primavera.com/2008/p6/6.2/Global" xmlns:intgfault="http://ws.primavera.com/2008/p6/6.2/IntegrationFaultType" name="GlobalService" targetNamespace="http://ws.primavera.com/2008/p6/6.2/Global" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ws.primavera.com/2008/p6/6.2/Global">
+      <xsd:import schemaLocation="http://192.168.101.107:8091/p6ws/services/CalendarService?xsd=IntegrationFault.xsd" namespace="http://ws.primavera.com/2008/p6/6.2/IntegrationFaultType" />
+      <xsd:complexType name="CreateCalendars">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Calendar" type="tns:Calendar" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CreateCalendarsResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CreateCalendars" type="tns:CreateCalendars" />
+      <xsd:element name="CreateCalendarsResponse" type="tns:CreateCalendarsResponse" />
+      <xsd:complexType name="ReadCalendars">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Field" type="tns:CalendarFieldType" />
+          <xsd:element minOccurs="0" name="Filter" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReadCalendarsResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Calendar" type="tns:Calendar" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReadCalendars" type="tns:ReadCalendars" />
+      <xsd:element name="ReadCalendarsResponse" type="tns:ReadCalendarsResponse" />
+      <xsd:simpleType name="CalendarFieldType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="BaseCalendarObjectId" />
+          <xsd:enumeration value="CreateDate" />
+          <xsd:enumeration value="CreateUser" />
+          <xsd:enumeration value="HolidayOrExceptions" />
+          <xsd:enumeration value="IsBaseline" />
+          <xsd:enumeration value="IsDefault" />
+          <xsd:enumeration value="LastUpdateDate" />
+          <xsd:enumeration value="LastUpdateUser" />
+          <xsd:enumeration value="Name" />
+          <xsd:enumeration value="ObjectId" />
+          <xsd:enumeration value="ProjectObjectId" />
+          <xsd:enumeration value="StandardWorkWeek" />
+          <xsd:enumeration value="Type" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="UpdateCalendars">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Calendar" type="tns:Calendar" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UpdateCalendarsResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="UpdateCalendars" type="tns:UpdateCalendars" />
+      <xsd:element name="UpdateCalendarsResponse" type="tns:UpdateCalendarsResponse" />
+      <xsd:complexType name="DeleteCalendars">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="DeleteWithReplacement">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+                <xsd:element name="ReplacementObjectId" type="xsd:int" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DeleteCalendarsResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="DeleteCalendars" type="tns:DeleteCalendars" />
+      <xsd:element name="DeleteCalendarsResponse" type="tns:DeleteCalendarsResponse" />
+      <xsd:complexType name="Calendar">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="BaseCalendarObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="CreateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="CreateUser" type="xsd:string" />
+          <xsd:element minOccurs="0" name="IsBaseline" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="IsDefault" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="LastUpdateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastUpdateUser" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Name">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="60" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="ProjectObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="Type">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Global" />
+                <xsd:enumeration value="Project" />
+                <xsd:enumeration value="Resource" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="StandardWorkWeek">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="7" maxOccurs="7" name="StandardWorkHours">
+                  <xsd:complexType>
+                    <xsd:sequence>
+                      <xsd:element name="DayOfWeek">
+                        <xsd:simpleType>
+                          <xsd:restriction base="xsd:string">
+                            <xsd:enumeration value="Sunday" />
+                            <xsd:enumeration value="Monday" />
+                            <xsd:enumeration value="Tuesday" />
+                            <xsd:enumeration value="Wednesday" />
+                            <xsd:enumeration value="Thursday" />
+                            <xsd:enumeration value="Friday" />
+                            <xsd:enumeration value="Saturday" />
+                          </xsd:restriction>
+                        </xsd:simpleType>
+                      </xsd:element>
+                      <xsd:element minOccurs="0" maxOccurs="12" name="WorkTime">
+                        <xsd:complexType>
+                          <xsd:sequence>
+                            <xsd:element name="Finish" type="xsd:time" />
+                            <xsd:element name="Start" type="xsd:time" />
+                          </xsd:sequence>
+                        </xsd:complexType>
+                      </xsd:element>
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="HolidayOrExceptions">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" name="HolidayOrException">
+                  <xsd:complexType>
+                    <xsd:sequence>
+                      <xsd:element name="Date" type="xsd:dateTime" />
+                      <xsd:element minOccurs="0" maxOccurs="12" name="WorkTime">
+                        <xsd:complexType>
+                          <xsd:sequence>
+                            <xsd:element name="Finish" type="xsd:time" />
+                            <xsd:element name="Start" type="xsd:time" />
+                          </xsd:sequence>
+                        </xsd:complexType>
+                      </xsd:element>
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CreateCostAccounts">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="CostAccount" type="tns:CostAccount" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CreateCostAccountsResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CreateCostAccounts" type="tns:CreateCostAccounts" />
+      <xsd:element name="CreateCostAccountsResponse" type="tns:CreateCostAccountsResponse" />
+      <xsd:complexType name="ReadCostAccounts">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Field" type="tns:CostAccountFieldType" />
+          <xsd:element minOccurs="0" name="Filter" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReadCostAccountsResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="CostAccount" type="tns:CostAccount" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReadCostAccounts" type="tns:ReadCostAccounts" />
+      <xsd:element name="ReadCostAccountsResponse" type="tns:ReadCostAccountsResponse" />
+      <xsd:simpleType name="CostAccountFieldType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="CreateDate" />
+          <xsd:enumeration value="CreateUser" />
+          <xsd:enumeration value="Description" />
+          <xsd:enumeration value="Id" />
+          <xsd:enumeration value="LastUpdateDate" />
+          <xsd:enumeration value="LastUpdateUser" />
+          <xsd:enumeration value="Name" />
+          <xsd:enumeration value="ObjectId" />
+          <xsd:enumeration value="ParentObjectId" />
+          <xsd:enumeration value="SequenceNumber" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="UpdateCostAccounts">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="CostAccount" type="tns:CostAccount" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UpdateCostAccountsResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="UpdateCostAccounts" type="tns:UpdateCostAccounts" />
+      <xsd:element name="UpdateCostAccountsResponse" type="tns:UpdateCostAccountsResponse" />
+      <xsd:complexType name="DeleteCostAccounts">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="DeleteWithReplacement">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+                <xsd:element name="ReplacementObjectId" type="xsd:int" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DeleteCostAccountsResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="DeleteCostAccounts" type="tns:DeleteCostAccounts" />
+      <xsd:element name="DeleteCostAccountsResponse" type="tns:DeleteCostAccountsResponse" />
+      <xsd:complexType name="ReadCostAccountPath">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+          <xsd:element maxOccurs="unbounded" name="Field" type="tns:CostAccountFieldType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReadCostAccountPathResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="CostAccount" type="tns:CostAccount" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReadCostAccountPath" type="tns:ReadCostAccountPath" />
+      <xsd:element name="ReadCostAccountPathResponse" type="tns:ReadCostAccountPathResponse" />
+      <xsd:complexType name="CostAccount">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CreateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="CreateUser" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Description" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Id">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="40" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="LastUpdateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastUpdateUser" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Name">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="100" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="ParentObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="SequenceNumber" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CreateCurrencies">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Currency" type="tns:Currency" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CreateCurrenciesResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CreateCurrencies" type="tns:CreateCurrencies" />
+      <xsd:element name="CreateCurrenciesResponse" type="tns:CreateCurrenciesResponse" />
+      <xsd:complexType name="ReadCurrencies">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Field" type="tns:CurrencyFieldType" />
+          <xsd:element minOccurs="0" name="Filter" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReadCurrenciesResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Currency" type="tns:Currency" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReadCurrencies" type="tns:ReadCurrencies" />
+      <xsd:element name="ReadCurrenciesResponse" type="tns:ReadCurrenciesResponse" />
+      <xsd:simpleType name="CurrencyFieldType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="CreateDate" />
+          <xsd:enumeration value="CreateUser" />
+          <xsd:enumeration value="DecimalPlaces" />
+          <xsd:enumeration value="DecimalSymbol" />
+          <xsd:enumeration value="DigitGroupingSymbol" />
+          <xsd:enumeration value="ExchangeRate" />
+          <xsd:enumeration value="Id" />
+          <xsd:enumeration value="IsBaseCurrency" />
+          <xsd:enumeration value="LastUpdateDate" />
+          <xsd:enumeration value="LastUpdateUser" />
+          <xsd:enumeration value="Name" />
+          <xsd:enumeration value="NegativeSymbol" />
+          <xsd:enumeration value="ObjectId" />
+          <xsd:enumeration value="PositiveSymbol" />
+          <xsd:enumeration value="Symbol" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="UpdateCurrencies">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Currency" type="tns:Currency" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UpdateCurrenciesResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="UpdateCurrencies" type="tns:UpdateCurrencies" />
+      <xsd:element name="UpdateCurrenciesResponse" type="tns:UpdateCurrenciesResponse" />
+      <xsd:complexType name="DeleteCurrencies">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DeleteCurrenciesResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="DeleteCurrencies" type="tns:DeleteCurrencies" />
+      <xsd:element name="DeleteCurrenciesResponse" type="tns:DeleteCurrenciesResponse" />
+      <xsd:complexType name="Currency">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CreateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="CreateUser" type="xsd:string" />
+          <xsd:element minOccurs="0" name="DecimalPlaces">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="0" />
+                <xsd:maxInclusive value="2" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DecimalSymbol">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="6" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DigitGroupingSymbol">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="6" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ExchangeRate">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:double">
+                <xsd:minInclusive value="1.0E-6" />
+                <xsd:maxInclusive value="9.99999999999999E8" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Id">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="6" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="IsBaseCurrency" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="LastUpdateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastUpdateUser" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Name">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="40" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="NegativeSymbol">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="(#1.1)" />
+                <xsd:enumeration value="-#1.1" />
+                <xsd:enumeration value="#-1.1" />
+                <xsd:enumeration value="#1.1-" />
+                <xsd:enumeration value="(1.1#)" />
+                <xsd:enumeration value="-1.1#" />
+                <xsd:enumeration value="1.1-#" />
+                <xsd:enumeration value="1.1#-" />
+                <xsd:enumeration value="-1.1 #" />
+                <xsd:enumeration value="-# 1.1" />
+                <xsd:enumeration value="1.1 #-" />
+                <xsd:enumeration value="# 1.1-" />
+                <xsd:enumeration value="# -1.1" />
+                <xsd:enumeration value="1.1- #" />
+                <xsd:enumeration value="(# 1.1)" />
+                <xsd:enumeration value="(1.1 #)" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="PositiveSymbol">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="#1.1" />
+                <xsd:enumeration value="1.1#" />
+                <xsd:enumeration value="# 1.1" />
+                <xsd:enumeration value="1.1 #" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Symbol">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="6" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CreateDocuments">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Document" type="tns:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CreateDocumentsResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CreateDocuments" type="tns:CreateDocuments" />
+      <xsd:element name="CreateDocumentsResponse" type="tns:CreateDocumentsResponse" />
+      <xsd:complexType name="ReadDocuments">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Field" type="tns:DocumentFieldType" />
+          <xsd:element minOccurs="0" name="Filter" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReadDocumentsResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Document" type="tns:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReadDocuments" type="tns:ReadDocuments" />
+      <xsd:element name="ReadDocumentsResponse" type="tns:ReadDocumentsResponse" />
+      <xsd:simpleType name="DocumentFieldType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Author" />
+          <xsd:enumeration value="CreateDate" />
+          <xsd:enumeration value="CreateUser" />
+          <xsd:enumeration value="Deliverable" />
+          <xsd:enumeration value="Description" />
+          <xsd:enumeration value="DocumentCategoryName" />
+          <xsd:enumeration value="DocumentCategoryObjectId" />
+          <xsd:enumeration value="DocumentStatusCodeName" />
+          <xsd:enumeration value="DocumentStatusCodeObjectId" />
+          <xsd:enumeration value="DocumentType" />
+          <xsd:enumeration value="GUID" />
+          <xsd:enumeration value="IsBaseline" />
+          <xsd:enumeration value="LastUpdateDate" />
+          <xsd:enumeration value="LastUpdateUser" />
+          <xsd:enumeration value="ObjectId" />
+          <xsd:enumeration value="ParentObjectId" />
+          <xsd:enumeration value="PrivateLocation" />
+          <xsd:enumeration value="ProjectId" />
+          <xsd:enumeration value="ProjectObjectId" />
+          <xsd:enumeration value="PublicLocation" />
+          <xsd:enumeration value="ReferenceNumber" />
+          <xsd:enumeration value="ResourceId" />
+          <xsd:enumeration value="ResourceName" />
+          <xsd:enumeration value="ResourceObjectId" />
+          <xsd:enumeration value="RevisionDate" />
+          <xsd:enumeration value="SequenceNumber" />
+          <xsd:enumeration value="Title" />
+          <xsd:enumeration value="UDF" />
+          <xsd:enumeration value="Version" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="UpdateDocuments">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Document" type="tns:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UpdateDocumentsResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="UpdateDocuments" type="tns:UpdateDocuments" />
+      <xsd:element name="UpdateDocumentsResponse" type="tns:UpdateDocumentsResponse" />
+      <xsd:complexType name="DeleteDocuments">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DeleteDocumentsResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="DeleteDocuments" type="tns:DeleteDocuments" />
+      <xsd:element name="DeleteDocumentsResponse" type="tns:DeleteDocumentsResponse" />
+      <xsd:complexType name="ReadDocumentPath">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+          <xsd:element maxOccurs="unbounded" name="Field" type="tns:DocumentFieldType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReadDocumentPathResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Document" type="tns:Document" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReadDocumentPath" type="tns:ReadDocumentPath" />
+      <xsd:element name="ReadDocumentPathResponse" type="tns:ReadDocumentPathResponse" />
+      <xsd:complexType name="Document">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Author">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="100" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="CreateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="CreateUser" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Deliverable" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="Description" type="xsd:string" />
+          <xsd:element minOccurs="0" name="DocumentCategoryName">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="100" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DocumentCategoryObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="DocumentStatusCodeName">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="36" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DocumentStatusCodeObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="DocumentType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Non-Collaboration Document" />
+                <xsd:enumeration value="Collaboration Document" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="GUID">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:pattern value="|\{[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\}" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="IsBaseline" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="LastUpdateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastUpdateUser" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="ParentObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="PrivateLocation">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="255" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ProjectId">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="40" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ProjectObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="PublicLocation">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="255" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ReferenceNumber">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="32" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ResourceId">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="40" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ResourceName">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="100" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ResourceObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="RevisionDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="SequenceNumber" type="xsd:int" />
+          <xsd:element minOccurs="0" name="Title">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="120" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Version">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="20" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CreateFinancialPeriods">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="FinancialPeriod" type="tns:FinancialPeriod" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CreateFinancialPeriodsResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CreateFinancialPeriods" type="tns:CreateFinancialPeriods" />
+      <xsd:element name="CreateFinancialPeriodsResponse" type="tns:CreateFinancialPeriodsResponse" />
+      <xsd:complexType name="ReadFinancialPeriods">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Field" type="tns:FinancialPeriodFieldType" />
+          <xsd:element minOccurs="0" name="Filter" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReadFinancialPeriodsResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="FinancialPeriod" type="tns:FinancialPeriod" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReadFinancialPeriods" type="tns:ReadFinancialPeriods" />
+      <xsd:element name="ReadFinancialPeriodsResponse" type="tns:ReadFinancialPeriodsResponse" />
+      <xsd:simpleType name="FinancialPeriodFieldType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="CreateDate" />
+          <xsd:enumeration value="CreateUser" />
+          <xsd:enumeration value="EndDate" />
+          <xsd:enumeration value="LastUpdateDate" />
+          <xsd:enumeration value="LastUpdateUser" />
+          <xsd:enumeration value="Name" />
+          <xsd:enumeration value="ObjectId" />
+          <xsd:enumeration value="StartDate" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="UpdateFinancialPeriods">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="FinancialPeriod" type="tns:FinancialPeriod" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UpdateFinancialPeriodsResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="UpdateFinancialPeriods" type="tns:UpdateFinancialPeriods" />
+      <xsd:element name="UpdateFinancialPeriodsResponse" type="tns:UpdateFinancialPeriodsResponse" />
+      <xsd:complexType name="DeleteFinancialPeriods">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DeleteFinancialPeriodsResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="DeleteFinancialPeriods" type="tns:DeleteFinancialPeriods" />
+      <xsd:element name="DeleteFinancialPeriodsResponse" type="tns:DeleteFinancialPeriodsResponse" />
+      <xsd:complexType name="FinancialPeriod">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CreateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="CreateUser" type="xsd:string" />
+          <xsd:element minOccurs="0" name="EndDate" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastUpdateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastUpdateUser" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Name">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="60" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="StartDate" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CreateFundingSources">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="FundingSource" type="tns:FundingSource" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CreateFundingSourcesResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CreateFundingSources" type="tns:CreateFundingSources" />
+      <xsd:element name="CreateFundingSourcesResponse" type="tns:CreateFundingSourcesResponse" />
+      <xsd:complexType name="ReadFundingSources">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Field" type="tns:FundingSourceFieldType" />
+          <xsd:element minOccurs="0" name="Filter" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReadFundingSourcesResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="FundingSource" type="tns:FundingSource" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReadFundingSources" type="tns:ReadFundingSources" />
+      <xsd:element name="ReadFundingSourcesResponse" type="tns:ReadFundingSourcesResponse" />
+      <xsd:simpleType name="FundingSourceFieldType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="CreateDate" />
+          <xsd:enumeration value="CreateUser" />
+          <xsd:enumeration value="Description" />
+          <xsd:enumeration value="LastUpdateDate" />
+          <xsd:enumeration value="LastUpdateUser" />
+          <xsd:enumeration value="Name" />
+          <xsd:enumeration value="ObjectId" />
+          <xsd:enumeration value="ParentObjectId" />
+          <xsd:enumeration value="SequenceNumber" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="UpdateFundingSources">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="FundingSource" type="tns:FundingSource" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UpdateFundingSourcesResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="UpdateFundingSources" type="tns:UpdateFundingSources" />
+      <xsd:element name="UpdateFundingSourcesResponse" type="tns:UpdateFundingSourcesResponse" />
+      <xsd:complexType name="DeleteFundingSources">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="DeleteWithReplacement">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+                <xsd:element name="ReplacementObjectId" type="xsd:int" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DeleteFundingSourcesResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="DeleteFundingSources" type="tns:DeleteFundingSources" />
+      <xsd:element name="DeleteFundingSourcesResponse" type="tns:DeleteFundingSourcesResponse" />
+      <xsd:complexType name="ReadFundingSourcePath">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+          <xsd:element maxOccurs="unbounded" name="Field" type="tns:FundingSourceFieldType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReadFundingSourcePathResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="FundingSource" type="tns:FundingSource" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReadFundingSourcePath" type="tns:ReadFundingSourcePath" />
+      <xsd:element name="ReadFundingSourcePathResponse" type="tns:ReadFundingSourcePathResponse" />
+      <xsd:complexType name="FundingSource">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CreateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="CreateUser" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Description" type="xsd:string" />
+          <xsd:element minOccurs="0" name="LastUpdateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastUpdateUser" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Name">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="100" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="ParentObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="SequenceNumber" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReadGlobalPreferences">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Field" type="tns:GlobalPreferencesFieldType" />
+          <xsd:element minOccurs="0" name="Filter" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReadGlobalPreferencesResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="GlobalPreferences" type="tns:GlobalPreferences" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReadGlobalPreferences" type="tns:ReadGlobalPreferences" />
+      <xsd:element name="ReadGlobalPreferencesResponse" type="tns:ReadGlobalPreferencesResponse" />
+      <xsd:simpleType name="GlobalPreferencesFieldType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="AllowUserTimePeriodFlag" />
+          <xsd:enumeration value="BaseCurrencyObjectId" />
+          <xsd:enumeration value="BaselineUseAtCompletionValueForEV" />
+          <xsd:enumeration value="BaselineUseBudgetedValuesWithPlannedDatesForEV" />
+          <xsd:enumeration value="CreateDate" />
+          <xsd:enumeration value="CreateUser" />
+          <xsd:enumeration value="CustomLabel1" />
+          <xsd:enumeration value="CustomLabel2" />
+          <xsd:enumeration value="CustomLabel3" />
+          <xsd:enumeration value="DayAbbreviation" />
+          <xsd:enumeration value="DefaultDuration" />
+          <xsd:enumeration value="DefaultTimesheetApprovalManager" />
+          <xsd:enumeration value="EVEstimateToCompleteFactor" />
+          <xsd:enumeration value="EVEstimateToCompleteTechnique" />
+          <xsd:enumeration value="EVPerformancePctCompleteCustomPct" />
+          <xsd:enumeration value="EVPerformancePctCompleteTechnique" />
+          <xsd:enumeration value="EnablePasswordPolicy" />
+          <xsd:enumeration value="EnableTSAudit" />
+          <xsd:enumeration value="FooterLabel1" />
+          <xsd:enumeration value="FooterLabel2" />
+          <xsd:enumeration value="FooterLabel3" />
+          <xsd:enumeration value="HeaderLabel1" />
+          <xsd:enumeration value="HeaderLabel2" />
+          <xsd:enumeration value="HeaderLabel3" />
+          <xsd:enumeration value="HourAbbreviation" />
+          <xsd:enumeration value="HoursPerDay" />
+          <xsd:enumeration value="HoursPerMonth" />
+          <xsd:enumeration value="HoursPerWeek" />
+          <xsd:enumeration value="HoursPerYear" />
+          <xsd:enumeration value="InitiationAdministrator" />
+          <xsd:enumeration value="LastUpdateDate" />
+          <xsd:enumeration value="LastUpdateUser" />
+          <xsd:enumeration value="LogHoursAfterActualFinish" />
+          <xsd:enumeration value="LogHoursBeforeActualStart" />
+          <xsd:enumeration value="LogHoursCompletedActivities" />
+          <xsd:enumeration value="LogHoursInFuture" />
+          <xsd:enumeration value="LogHoursNotStartedActivities" />
+          <xsd:enumeration value="MaxActivityCodeTreeLevels" />
+          <xsd:enumeration value="MaxActivityCodesPerProject" />
+          <xsd:enumeration value="MaxActivityIdLength" />
+          <xsd:enumeration value="MaxBaselinesPerProject" />
+          <xsd:enumeration value="MaxCostAccountLength" />
+          <xsd:enumeration value="MaxCostAccountTreeLevels" />
+          <xsd:enumeration value="MaxOBSTreeLevels" />
+          <xsd:enumeration value="MaxProjectCodeTreeLevels" />
+          <xsd:enumeration value="MaxProjectIdLength" />
+          <xsd:enumeration value="MaxResourceCodeTreeLevels" />
+          <xsd:enumeration value="MaxResourceIdLength" />
+          <xsd:enumeration value="MaxResourceTreeLevels" />
+          <xsd:enumeration value="MaxRoleIdLength" />
+          <xsd:enumeration value="MaxRoleTreeLevels" />
+          <xsd:enumeration value="MaxTimesheetResourceHours" />
+          <xsd:enumeration value="MaxWBSCodeLength" />
+          <xsd:enumeration value="MaxWBSTreeLevels" />
+          <xsd:enumeration value="MinuteAbbreviation" />
+          <xsd:enumeration value="MonthAbbreviation" />
+          <xsd:enumeration value="NumberOfAccessibleFutureTimesheets" />
+          <xsd:enumeration value="NumberOfAccessiblePastTimesheets" />
+          <xsd:enumeration value="ResourcesCanAssignThemselvesToActivities" />
+          <xsd:enumeration value="StartDayOfWeek" />
+          <xsd:enumeration value="SummarizeByCalendar" />
+          <xsd:enumeration value="SummarizeByFinancialPeriods" />
+          <xsd:enumeration value="SummaryResourceSpreadInterval" />
+          <xsd:enumeration value="SummaryWBSSpreadInterval" />
+          <xsd:enumeration value="TimeWindowCompletedActivities" />
+          <xsd:enumeration value="TimeWindowNotStartedActivities" />
+          <xsd:enumeration value="TimesheetApprovalLevel" />
+          <xsd:enumeration value="TimesheetDecimalDigits" />
+          <xsd:enumeration value="TimesheetInterval" />
+          <xsd:enumeration value="UseMaxTimesheetResourceHours" />
+          <xsd:enumeration value="UseProjectArchitect" />
+          <xsd:enumeration value="UseProjectManagerApproval" />
+          <xsd:enumeration value="UseTimesheets" />
+          <xsd:enumeration value="WBSCategoryLabel" />
+          <xsd:enumeration value="WBSCodeSeparator" />
+          <xsd:enumeration value="WeekAbbreviation" />
+          <xsd:enumeration value="YearAbbreviation" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="UpdateGlobalPreferences">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="GlobalPreferences" type="tns:GlobalPreferences" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UpdateGlobalPreferencesResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="UpdateGlobalPreferences" type="tns:UpdateGlobalPreferences" />
+      <xsd:element name="UpdateGlobalPreferencesResponse" type="tns:UpdateGlobalPreferencesResponse" />
+      <xsd:complexType name="GlobalPreferences">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="AllowUserTimePeriodFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="BaseCurrencyObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="BaselineUseAtCompletionValueForEV" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="BaselineUseBudgetedValuesWithPlannedDatesForEV" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="CreateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="CreateUser" type="xsd:string" />
+          <xsd:element minOccurs="0" name="CustomLabel1">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="255" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="CustomLabel2">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="255" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="CustomLabel3">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="255" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DayAbbreviation">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="4" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DefaultDuration">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:double">
+                <xsd:minInclusive value="0.0" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="DefaultTimesheetApprovalManager" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="EVEstimateToCompleteFactor" nillable="true">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:double">
+                <xsd:minInclusive value="0.0" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="EVEstimateToCompleteTechnique">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="" />
+                <xsd:enumeration value="ETC = Remaining Cost for Activity" />
+                <xsd:enumeration value="PF = 1" />
+                <xsd:enumeration value="PF = Custom Value" />
+                <xsd:enumeration value="PF = 1 / CPI" />
+                <xsd:enumeration value="PF = 1 / (CPI * SPI)" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="EVPerformancePctCompleteCustomPct" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="EVPerformancePctCompleteTechnique">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="" />
+                <xsd:enumeration value="Activity Percent Complete" />
+                <xsd:enumeration value="0 / 100" />
+                <xsd:enumeration value="50 / 50" />
+                <xsd:enumeration value="Custom Percent Complete" />
+                <xsd:enumeration value="WBS Milestones Percent Complete" />
+                <xsd:enumeration value="Activity Percent Complete Using Resource Curves" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="EnablePasswordPolicy" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="EnableTSAudit" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="FooterLabel1">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="255" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="FooterLabel2">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="255" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="FooterLabel3">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="255" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="HeaderLabel1">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="255" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="HeaderLabel2">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="255" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="HeaderLabel3">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="255" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="HourAbbreviation">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="4" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="HoursPerDay" type="xsd:double" />
+          <xsd:element minOccurs="0" name="HoursPerMonth" type="xsd:double" />
+          <xsd:element minOccurs="0" name="HoursPerWeek" type="xsd:double" />
+          <xsd:element minOccurs="0" name="HoursPerYear" type="xsd:double" />
+          <xsd:element minOccurs="0" name="InitiationAdministrator" type="xsd:int" />
+          <xsd:element minOccurs="0" name="LastUpdateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastUpdateUser" type="xsd:string" />
+          <xsd:element minOccurs="0" name="LogHoursAfterActualFinish" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="LogHoursBeforeActualStart" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="LogHoursCompletedActivities" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="LogHoursInFuture" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="LogHoursNotStartedActivities" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="MaxActivityCodeTreeLevels">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="1" />
+                <xsd:maxInclusive value="25" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MaxActivityCodesPerProject" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="MaxActivityIdLength">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="1" />
+                <xsd:maxInclusive value="20" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MaxBaselinesPerProject">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="1" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MaxCostAccountLength">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="1" />
+                <xsd:maxInclusive value="20" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MaxCostAccountTreeLevels">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="1" />
+                <xsd:maxInclusive value="25" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MaxOBSTreeLevels">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="1" />
+                <xsd:maxInclusive value="25" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MaxProjectCodeTreeLevels">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="1" />
+                <xsd:maxInclusive value="25" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MaxProjectIdLength">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="1" />
+                <xsd:maxInclusive value="20" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MaxResourceCodeTreeLevels">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="1" />
+                <xsd:maxInclusive value="25" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MaxResourceIdLength" type="xsd:int" />
+          <xsd:element minOccurs="0" name="MaxResourceTreeLevels">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="1" />
+                <xsd:maxInclusive value="25" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MaxRoleIdLength">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="1" />
+                <xsd:maxInclusive value="20" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MaxRoleTreeLevels">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="1" />
+                <xsd:maxInclusive value="25" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MaxTimesheetResourceHours" nillable="true">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:double">
+                <xsd:minInclusive value="1.0" />
+                <xsd:maxInclusive value="24.0" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MaxWBSCodeLength">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="1" />
+                <xsd:maxInclusive value="20" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MaxWBSTreeLevels">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="1" />
+                <xsd:maxInclusive value="50" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MinuteAbbreviation">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="4" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MonthAbbreviation">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="4" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="NumberOfAccessibleFutureTimesheets">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="0" />
+                <xsd:maxInclusive value="200" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="NumberOfAccessiblePastTimesheets">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="0" />
+                <xsd:maxInclusive value="200" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ResourcesCanAssignThemselvesToActivities" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="StartDayOfWeek">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:int">
+                <xsd:minInclusive value="1" />
+                <xsd:maxInclusive value="7" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="SummarizeByCalendar" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="SummarizeByFinancialPeriods" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="SummaryResourceSpreadInterval">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Month" />
+                <xsd:enumeration value="Week" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="SummaryWBSSpreadInterval">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Month" />
+                <xsd:enumeration value="Week" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="TimeWindowCompletedActivities" type="xsd:int" />
+          <xsd:element minOccurs="0" name="TimeWindowNotStartedActivities" type="xsd:int" />
+          <xsd:element minOccurs="0" name="TimesheetApprovalLevel" type="xsd:int" />
+          <xsd:element minOccurs="0" name="TimesheetDecimalDigits" type="xsd:int" />
+          <xsd:element minOccurs="0" name="TimesheetInterval" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="UseMaxTimesheetResourceHours" nillable="true" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="UseProjectArchitect" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="UseProjectManagerApproval">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="20" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="UseTimesheets" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="WBSCategoryLabel">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="40" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="WBSCodeSeparator">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="2" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="WeekAbbreviation">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="4" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="YearAbbreviation">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="4" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReadMethodologies">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Field" type="tns:MethodologyFieldType" />
+          <xsd:element minOccurs="0" name="Filter" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReadMethodologiesResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Methodology" type="tns:Methodology" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReadMethodologies" type="tns:ReadMethodologies" />
+      <xsd:element name="ReadMethodologiesResponse" type="tns:ReadMethodologiesResponse" />
+      <xsd:simpleType name="MethodologyFieldType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Name" />
+          <xsd:enumeration value="ObjectId" />
+          <xsd:enumeration value="Type" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="Methodology">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Name">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="100" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="Type">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Base" />
+                <xsd:enumeration value="Plug-In" />
+                <xsd:enumeration value="Activity Library" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CreateOBS">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="OBS" type="tns:OBS" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CreateOBSResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CreateOBS" type="tns:CreateOBS" />
+      <xsd:element name="CreateOBSResponse" type="tns:CreateOBSResponse" />
+      <xsd:complexType name="ReadOBS">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Field" type="tns:OBSFieldType" />
+          <xsd:element minOccurs="0" name="Filter" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReadOBSResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="OBS" type="tns:OBS" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReadOBS" type="tns:ReadOBS" />
+      <xsd:element name="ReadOBSResponse" type="tns:ReadOBSResponse" />
+      <xsd:simpleType name="OBSFieldType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="CreateDate" />
+          <xsd:enumeration value="CreateUser" />
+          <xsd:enumeration value="Description" />
+          <xsd:enumeration value="GUID" />
+          <xsd:enumeration value="LastUpdateDate" />
+          <xsd:enumeration value="LastUpdateUser" />
+          <xsd:enumeration value="Name" />
+          <xsd:enumeration value="ObjectId" />
+          <xsd:enumeration value="ParentObjectId" />
+          <xsd:enumeration value="SequenceNumber" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="UpdateOBS">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="OBS" type="tns:OBS" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UpdateOBSResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="UpdateOBS" type="tns:UpdateOBS" />
+      <xsd:element name="UpdateOBSResponse" type="tns:UpdateOBSResponse" />
+      <xsd:complexType name="DeleteOBS">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="DeleteWithReplacement">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+                <xsd:element name="ReplacementObjectId" type="xsd:int" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DeleteOBSResponse">
+        <xsd:sequence>
+          <xsd:element name="Return" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="DeleteOBS" type="tns:DeleteOBS" />
+      <xsd:element name="DeleteOBSResponse" type="tns:DeleteOBSResponse" />
+      <xsd:complexType name="ReadOBSPath">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="ObjectId" type="xsd:int" />
+          <xsd:element maxOccurs="unbounded" name="Field" type="tns:OBSFieldType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReadOBSPathResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="OBS" type="tns:OBS" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReadOBSPath" type="tns:ReadOBSPath" />
+      <xsd:element name="ReadOBSPathResponse" type="tns:ReadOBSPathResponse" />
+      <xsd:complexType name="OBS">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CreateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="CreateUser" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Description" type="xsd:string" />
+          <xsd:element minOccurs="0" name="GUID">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:pattern value="|\{[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\}" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="LastUpdateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastUpdateUser" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Name">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="100" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ObjectId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="ParentObjectId" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="SequenceNumber" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="UpdateDocumentsResponse">
+    <wsdl:part name="result" element="tns:UpdateDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCalendarsResponse">
+    <wsdl:part name="result" element="tns:DeleteCalendarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFinancialPeriods">
+    <wsdl:part name="params" element="tns:UpdateFinancialPeriods" />
+  </wsdl:message>
+  <wsdl:message name="ReadGlobalPreferences">
+    <wsdl:part name="params" element="tns:ReadGlobalPreferences" />
+  </wsdl:message>
+  <wsdl:message name="ReadFinancialPeriods">
+    <wsdl:part name="params" element="tns:ReadFinancialPeriods" />
+  </wsdl:message>
+  <wsdl:message name="ReadCostAccounts">
+    <wsdl:part name="params" element="tns:ReadCostAccounts" />
+  </wsdl:message>
+  <wsdl:message name="ReadCostAccountPathResponse">
+    <wsdl:part name="result" element="tns:ReadCostAccountPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDocuments">
+    <wsdl:part name="params" element="tns:DeleteDocuments" />
+  </wsdl:message>
+  <wsdl:message name="CreateCalendarsResponse">
+    <wsdl:part name="result" element="tns:CreateCalendarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadFundingSourcePathResponse">
+    <wsdl:part name="result" element="tns:ReadFundingSourcePathResponse" />
+  </wsdl:message>
+  <wsdl:message name="IntegrationFault">
+    <wsdl:part name="fault" element="intgfault:IntegrationFault" />
+  </wsdl:message>
+  <wsdl:message name="ReadCalendarsResponse">
+    <wsdl:part name="result" element="tns:ReadCalendarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadFundingSourcePath">
+    <wsdl:part name="params" element="tns:ReadFundingSourcePath" />
+  </wsdl:message>
+  <wsdl:message name="ReadGlobalPreferencesResponse">
+    <wsdl:part name="result" element="tns:ReadGlobalPreferencesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCostAccountsResponse">
+    <wsdl:part name="result" element="tns:CreateCostAccountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadDocumentPathResponse">
+    <wsdl:part name="result" element="tns:ReadDocumentPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteOBSResponse">
+    <wsdl:part name="result" element="tns:DeleteOBSResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCurrenciesResponse">
+    <wsdl:part name="result" element="tns:CreateCurrenciesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFundingSourcesResponse">
+    <wsdl:part name="result" element="tns:DeleteFundingSourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteOBS">
+    <wsdl:part name="params" element="tns:DeleteOBS" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCostAccounts">
+    <wsdl:part name="params" element="tns:DeleteCostAccounts" />
+  </wsdl:message>
+  <wsdl:message name="ReadCalendars">
+    <wsdl:part name="params" element="tns:ReadCalendars" />
+  </wsdl:message>
+  <wsdl:message name="CreateFinancialPeriods">
+    <wsdl:part name="params" element="tns:CreateFinancialPeriods" />
+  </wsdl:message>
+  <wsdl:message name="ReadFundingSourcesResponse">
+    <wsdl:part name="result" element="tns:ReadFundingSourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadMethodologiesResponse">
+    <wsdl:part name="result" element="tns:ReadMethodologiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCalendarsResponse">
+    <wsdl:part name="result" element="tns:UpdateCalendarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDocumentsResponse">
+    <wsdl:part name="result" element="tns:DeleteDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCostAccountsResponse">
+    <wsdl:part name="result" element="tns:DeleteCostAccountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateGlobalPreferencesResponse">
+    <wsdl:part name="result" element="tns:UpdateGlobalPreferencesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCalendars">
+    <wsdl:part name="params" element="tns:CreateCalendars" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCostAccountsResponse">
+    <wsdl:part name="result" element="tns:UpdateCostAccountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFinancialPeriodsResponse">
+    <wsdl:part name="result" element="tns:UpdateFinancialPeriodsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCurrenciesResponse">
+    <wsdl:part name="result" element="tns:DeleteCurrenciesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFinancialPeriods">
+    <wsdl:part name="params" element="tns:DeleteFinancialPeriods" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCostAccounts">
+    <wsdl:part name="params" element="tns:UpdateCostAccounts" />
+  </wsdl:message>
+  <wsdl:message name="ReadDocumentPath">
+    <wsdl:part name="params" element="tns:ReadDocumentPath" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFundingSources">
+    <wsdl:part name="params" element="tns:UpdateFundingSources" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOBSResponse">
+    <wsdl:part name="result" element="tns:UpdateOBSResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadOBSResponse">
+    <wsdl:part name="result" element="tns:ReadOBSResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCurrencies">
+    <wsdl:part name="params" element="tns:CreateCurrencies" />
+  </wsdl:message>
+  <wsdl:message name="ReadOBSPathResponse">
+    <wsdl:part name="result" element="tns:ReadOBSPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateOBSResponse">
+    <wsdl:part name="result" element="tns:CreateOBSResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadCurrenciesResponse">
+    <wsdl:part name="result" element="tns:ReadCurrenciesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFinancialPeriodsResponse">
+    <wsdl:part name="result" element="tns:DeleteFinancialPeriodsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadCostAccountPath">
+    <wsdl:part name="params" element="tns:ReadCostAccountPath" />
+  </wsdl:message>
+  <wsdl:message name="CreateCostAccounts">
+    <wsdl:part name="params" element="tns:CreateCostAccounts" />
+  </wsdl:message>
+  <wsdl:message name="CreateDocuments">
+    <wsdl:part name="params" element="tns:CreateDocuments" />
+  </wsdl:message>
+  <wsdl:message name="CreateFinancialPeriodsResponse">
+    <wsdl:part name="result" element="tns:CreateFinancialPeriodsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCurrencies">
+    <wsdl:part name="params" element="tns:DeleteCurrencies" />
+  </wsdl:message>
+  <wsdl:message name="ReadCostAccountsResponse">
+    <wsdl:part name="result" element="tns:ReadCostAccountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadFinancialPeriodsResponse">
+    <wsdl:part name="result" element="tns:ReadFinancialPeriodsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDocuments">
+    <wsdl:part name="params" element="tns:UpdateDocuments" />
+  </wsdl:message>
+  <wsdl:message name="CreateDocumentsResponse">
+    <wsdl:part name="result" element="tns:CreateDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCurrenciesResponse">
+    <wsdl:part name="result" element="tns:UpdateCurrenciesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCurrencies">
+    <wsdl:part name="params" element="tns:UpdateCurrencies" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOBS">
+    <wsdl:part name="params" element="tns:UpdateOBS" />
+  </wsdl:message>
+  <wsdl:message name="CreateOBS">
+    <wsdl:part name="params" element="tns:CreateOBS" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFundingSourcesResponse">
+    <wsdl:part name="result" element="tns:UpdateFundingSourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadOBS">
+    <wsdl:part name="params" element="tns:ReadOBS" />
+  </wsdl:message>
+  <wsdl:message name="ReadDocumentsResponse">
+    <wsdl:part name="result" element="tns:ReadDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadMethodologies">
+    <wsdl:part name="params" element="tns:ReadMethodologies" />
+  </wsdl:message>
+  <wsdl:message name="ReadDocuments">
+    <wsdl:part name="params" element="tns:ReadDocuments" />
+  </wsdl:message>
+  <wsdl:message name="CreateFundingSources">
+    <wsdl:part name="params" element="tns:CreateFundingSources" />
+  </wsdl:message>
+  <wsdl:message name="ReadOBSPath">
+    <wsdl:part name="params" element="tns:ReadOBSPath" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCalendars">
+    <wsdl:part name="params" element="tns:UpdateCalendars" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCalendars">
+    <wsdl:part name="params" element="tns:DeleteCalendars" />
+  </wsdl:message>
+  <wsdl:message name="UpdateGlobalPreferences">
+    <wsdl:part name="params" element="tns:UpdateGlobalPreferences" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFundingSources">
+    <wsdl:part name="params" element="tns:DeleteFundingSources" />
+  </wsdl:message>
+  <wsdl:message name="ReadCurrencies">
+    <wsdl:part name="params" element="tns:ReadCurrencies" />
+  </wsdl:message>
+  <wsdl:message name="ReadFundingSources">
+    <wsdl:part name="params" element="tns:ReadFundingSources" />
+  </wsdl:message>
+  <wsdl:message name="CreateFundingSourcesResponse">
+    <wsdl:part name="result" element="tns:CreateFundingSourcesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="GlobalPreferencesPortType">
+    <wsdl:operation name="ReadGlobalPreferences">
+      <wsdl:input name="ReadGlobalPreferencesRequest" message="tns:ReadGlobalPreferences" />
+      <wsdl:output name="ReadGlobalPreferencesResponse" message="tns:ReadGlobalPreferencesResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGlobalPreferences">
+      <wsdl:input name="UpdateGlobalPreferencesRequest" message="tns:UpdateGlobalPreferences" />
+      <wsdl:output name="UpdateGlobalPreferencesResponse" message="tns:UpdateGlobalPreferencesResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DocumentPortType">
+    <wsdl:operation name="CreateDocuments">
+      <wsdl:input name="CreateDocumentsRequest" message="tns:CreateDocuments" />
+      <wsdl:output name="CreateDocumentsResponse" message="tns:CreateDocumentsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadDocuments">
+      <wsdl:input name="ReadDocumentsRequest" message="tns:ReadDocuments" />
+      <wsdl:output name="ReadDocumentsResponse" message="tns:ReadDocumentsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDocuments">
+      <wsdl:input name="UpdateDocumentsRequest" message="tns:UpdateDocuments" />
+      <wsdl:output name="UpdateDocumentsResponse" message="tns:UpdateDocumentsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocuments">
+      <wsdl:input name="DeleteDocumentsRequest" message="tns:DeleteDocuments" />
+      <wsdl:output name="DeleteDocumentsResponse" message="tns:DeleteDocumentsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadDocumentPath">
+      <wsdl:input name="ReadDocumentPathRequest" message="tns:ReadDocumentPath" />
+      <wsdl:output name="ReadDocumentPathResponse" message="tns:ReadDocumentPathResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MethodologyPortType">
+    <wsdl:operation name="ReadMethodologies">
+      <wsdl:input name="ReadMethodologiesRequest" message="tns:ReadMethodologies" />
+      <wsdl:output name="ReadMethodologiesResponse" message="tns:ReadMethodologiesResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CostAccountPortType">
+    <wsdl:operation name="CreateCostAccounts">
+      <wsdl:input name="CreateCostAccountsRequest" message="tns:CreateCostAccounts" />
+      <wsdl:output name="CreateCostAccountsResponse" message="tns:CreateCostAccountsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadCostAccounts">
+      <wsdl:input name="ReadCostAccountsRequest" message="tns:ReadCostAccounts" />
+      <wsdl:output name="ReadCostAccountsResponse" message="tns:ReadCostAccountsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCostAccounts">
+      <wsdl:input name="UpdateCostAccountsRequest" message="tns:UpdateCostAccounts" />
+      <wsdl:output name="UpdateCostAccountsResponse" message="tns:UpdateCostAccountsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCostAccounts">
+      <wsdl:input name="DeleteCostAccountsRequest" message="tns:DeleteCostAccounts" />
+      <wsdl:output name="DeleteCostAccountsResponse" message="tns:DeleteCostAccountsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadCostAccountPath">
+      <wsdl:input name="ReadCostAccountPathRequest" message="tns:ReadCostAccountPath" />
+      <wsdl:output name="ReadCostAccountPathResponse" message="tns:ReadCostAccountPathResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="OBSPortType">
+    <wsdl:operation name="CreateOBS">
+      <wsdl:input name="CreateOBSRequest" message="tns:CreateOBS" />
+      <wsdl:output name="CreateOBSResponse" message="tns:CreateOBSResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadOBS">
+      <wsdl:input name="ReadOBSRequest" message="tns:ReadOBS" />
+      <wsdl:output name="ReadOBSResponse" message="tns:ReadOBSResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOBS">
+      <wsdl:input name="UpdateOBSRequest" message="tns:UpdateOBS" />
+      <wsdl:output name="UpdateOBSResponse" message="tns:UpdateOBSResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOBS">
+      <wsdl:input name="DeleteOBSRequest" message="tns:DeleteOBS" />
+      <wsdl:output name="DeleteOBSResponse" message="tns:DeleteOBSResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadOBSPath">
+      <wsdl:input name="ReadOBSPathRequest" message="tns:ReadOBSPath" />
+      <wsdl:output name="ReadOBSPathResponse" message="tns:ReadOBSPathResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FinancialPeriodPortType">
+    <wsdl:operation name="CreateFinancialPeriods">
+      <wsdl:input name="CreateFinancialPeriodsRequest" message="tns:CreateFinancialPeriods" />
+      <wsdl:output name="CreateFinancialPeriodsResponse" message="tns:CreateFinancialPeriodsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadFinancialPeriods">
+      <wsdl:input name="ReadFinancialPeriodsRequest" message="tns:ReadFinancialPeriods" />
+      <wsdl:output name="ReadFinancialPeriodsResponse" message="tns:ReadFinancialPeriodsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFinancialPeriods">
+      <wsdl:input name="UpdateFinancialPeriodsRequest" message="tns:UpdateFinancialPeriods" />
+      <wsdl:output name="UpdateFinancialPeriodsResponse" message="tns:UpdateFinancialPeriodsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFinancialPeriods">
+      <wsdl:input name="DeleteFinancialPeriodsRequest" message="tns:DeleteFinancialPeriods" />
+      <wsdl:output name="DeleteFinancialPeriodsResponse" message="tns:DeleteFinancialPeriodsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CalendarPortType">
+    <wsdl:operation name="CreateCalendars">
+      <wsdl:input name="CreateCalendarsRequest" message="tns:CreateCalendars" />
+      <wsdl:output name="CreateCalendarsResponse" message="tns:CreateCalendarsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadCalendars">
+      <wsdl:input name="ReadCalendarsRequest" message="tns:ReadCalendars" />
+      <wsdl:output name="ReadCalendarsResponse" message="tns:ReadCalendarsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCalendars">
+      <wsdl:input name="UpdateCalendarsRequest" message="tns:UpdateCalendars" />
+      <wsdl:output name="UpdateCalendarsResponse" message="tns:UpdateCalendarsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCalendars">
+      <wsdl:input name="DeleteCalendarsRequest" message="tns:DeleteCalendars" />
+      <wsdl:output name="DeleteCalendarsResponse" message="tns:DeleteCalendarsResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FundingSourcePortType">
+    <wsdl:operation name="CreateFundingSources">
+      <wsdl:input name="CreateFundingSourcesRequest" message="tns:CreateFundingSources" />
+      <wsdl:output name="CreateFundingSourcesResponse" message="tns:CreateFundingSourcesResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadFundingSources">
+      <wsdl:input name="ReadFundingSourcesRequest" message="tns:ReadFundingSources" />
+      <wsdl:output name="ReadFundingSourcesResponse" message="tns:ReadFundingSourcesResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFundingSources">
+      <wsdl:input name="UpdateFundingSourcesRequest" message="tns:UpdateFundingSources" />
+      <wsdl:output name="UpdateFundingSourcesResponse" message="tns:UpdateFundingSourcesResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFundingSources">
+      <wsdl:input name="DeleteFundingSourcesRequest" message="tns:DeleteFundingSources" />
+      <wsdl:output name="DeleteFundingSourcesResponse" message="tns:DeleteFundingSourcesResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadFundingSourcePath">
+      <wsdl:input name="ReadFundingSourcePathRequest" message="tns:ReadFundingSourcePath" />
+      <wsdl:output name="ReadFundingSourcePathResponse" message="tns:ReadFundingSourcePathResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CurrencyPortType">
+    <wsdl:operation name="CreateCurrencies">
+      <wsdl:input name="CreateCurrenciesRequest" message="tns:CreateCurrencies" />
+      <wsdl:output name="CreateCurrenciesResponse" message="tns:CreateCurrenciesResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadCurrencies">
+      <wsdl:input name="ReadCurrenciesRequest" message="tns:ReadCurrencies" />
+      <wsdl:output name="ReadCurrenciesResponse" message="tns:ReadCurrenciesResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCurrencies">
+      <wsdl:input name="UpdateCurrenciesRequest" message="tns:UpdateCurrencies" />
+      <wsdl:output name="UpdateCurrenciesResponse" message="tns:UpdateCurrenciesResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCurrencies">
+      <wsdl:input name="DeleteCurrenciesRequest" message="tns:DeleteCurrencies" />
+      <wsdl:output name="DeleteCurrenciesResponse" message="tns:DeleteCurrenciesResponse" />
+      <wsdl:fault name="IntegrationFault" message="tns:IntegrationFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GlobalPreferencesPortBinding" type="tns:GlobalPreferencesPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadGlobalPreferences">
+      <soap:operation soapAction="ReadGlobalPreferences" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGlobalPreferences">
+      <soap:operation soapAction="UpdateGlobalPreferences" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CostAccountPortBinding" type="tns:CostAccountPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateCostAccounts">
+      <soap:operation soapAction="CreateCostAccounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCostAccounts">
+      <soap:operation soapAction="ReadCostAccounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCostAccounts">
+      <soap:operation soapAction="UpdateCostAccounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCostAccounts">
+      <soap:operation soapAction="DeleteCostAccounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCostAccountPath">
+      <soap:operation soapAction="ReadCostAccountPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CalendarPortBinding" type="tns:CalendarPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateCalendars">
+      <soap:operation soapAction="CreateCalendars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCalendars">
+      <soap:operation soapAction="ReadCalendars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCalendars">
+      <soap:operation soapAction="UpdateCalendars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCalendars">
+      <soap:operation soapAction="DeleteCalendars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="OBSPortBinding" type="tns:OBSPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateOBS">
+      <soap:operation soapAction="CreateOBS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadOBS">
+      <soap:operation soapAction="ReadOBS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOBS">
+      <soap:operation soapAction="UpdateOBS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOBS">
+      <soap:operation soapAction="DeleteOBS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadOBSPath">
+      <soap:operation soapAction="ReadOBSPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FinancialPeriodPortBinding" type="tns:FinancialPeriodPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateFinancialPeriods">
+      <soap:operation soapAction="CreateFinancialPeriods" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadFinancialPeriods">
+      <soap:operation soapAction="ReadFinancialPeriods" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFinancialPeriods">
+      <soap:operation soapAction="UpdateFinancialPeriods" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFinancialPeriods">
+      <soap:operation soapAction="DeleteFinancialPeriods" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DocumentPortBinding" type="tns:DocumentPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateDocuments">
+      <soap:operation soapAction="CreateDocuments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadDocuments">
+      <soap:operation soapAction="ReadDocuments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDocuments">
+      <soap:operation soapAction="UpdateDocuments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocuments">
+      <soap:operation soapAction="DeleteDocuments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadDocumentPath">
+      <soap:operation soapAction="ReadDocumentPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FundingSourcePortBinding" type="tns:FundingSourcePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateFundingSources">
+      <soap:operation soapAction="CreateFundingSources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadFundingSources">
+      <soap:operation soapAction="ReadFundingSources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFundingSources">
+      <soap:operation soapAction="UpdateFundingSources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFundingSources">
+      <soap:operation soapAction="DeleteFundingSources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadFundingSourcePath">
+      <soap:operation soapAction="ReadFundingSourcePath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MethodologyPortBinding" type="tns:MethodologyPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadMethodologies">
+      <soap:operation soapAction="ReadMethodologies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CurrencyPortBinding" type="tns:CurrencyPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateCurrencies">
+      <soap:operation soapAction="CreateCurrencies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCurrencies">
+      <soap:operation soapAction="ReadCurrencies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCurrencies">
+      <soap:operation soapAction="UpdateCurrencies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCurrencies">
+      <soap:operation soapAction="DeleteCurrencies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IntegrationFault">
+        <soap:fault use="literal" name="IntegrationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GlobalPreferencesService">
+    <wsdl:port name="GlobalPreferencesPort" binding="tns:GlobalPreferencesPortBinding">
+      <soap:address location="http://192.168.101.107:8091/p6ws/services/GlobalPreferencesService" />
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:service name="FundingSourceService">
+    <wsdl:port name="FundingSourcePort" binding="tns:FundingSourcePortBinding">
+      <soap:address location="http://192.168.101.107:8091/p6ws/services/FundingSourceService" />
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:service name="FinancialPeriodService">
+    <wsdl:port name="FinancialPeriodPort" binding="tns:FinancialPeriodPortBinding">
+      <soap:address location="http://192.168.101.107:8091/p6ws/services/FinancialPeriodService" />
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:service name="CurrencyService">
+    <wsdl:port name="CurrencyPort" binding="tns:CurrencyPortBinding">
+      <soap:address location="http://192.168.101.107:8091/p6ws/services/CurrencyService" />
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:service name="CostAccountService">
+    <wsdl:port name="CostAccountPort" binding="tns:CostAccountPortBinding">
+      <soap:address location="http://192.168.101.107:8091/p6ws/services/CostAccountService" />
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:service name="DocumentService">
+    <wsdl:port name="DocumentPort" binding="tns:DocumentPortBinding">
+      <soap:address location="http://192.168.101.107:8091/p6ws/services/DocumentService" />
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:service name="OBSService">
+    <wsdl:port name="OBSPort" binding="tns:OBSPortBinding">
+      <soap:address location="http://192.168.101.107:8091/p6ws/services/OBSService" />
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:service name="CalendarService">
+    <wsdl:port name="CalendarPort" binding="tns:CalendarPortBinding">
+      <soap:address location="http://192.168.101.107:8091/p6ws/services/CalendarService" />
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:service name="MethodologyService">
+    <wsdl:port name="MethodologyPort" binding="tns:MethodologyPortBinding">
+      <soap:address location="http://192.168.101.107:8091/p6ws/services/MethodologyService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

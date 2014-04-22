@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Element.Sigma.Web.Service.GlobalSettings.SigmaGlobalSettings" CodeBehind="SigmaGlobalSettings.svc.cs" %>

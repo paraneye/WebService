@@ -1,0 +1,3 @@
+PDFLibNet.dll 
+
+x86(32bit)  .Net Framwork 4.0

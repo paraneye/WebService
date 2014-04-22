@@ -1,0 +1,937 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B30B244C-69B6-4E6F-A558-F8302E919777}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Element.Sigma.Web.Biz</RootNamespace>
+    <AssemblyName>Element.Sigma.Web.Biz</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Diagrams">
+      <HintPath>..\Element.Shared.Bin\Diagrams.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Element.Shared.Bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Element.Shared.Bin\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="OptimaJet.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=789c43c2fad22187, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Element.Shared.Bin\OptimaJet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="OptimaJet.Workflow.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3d29392dccd464d7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Element.Shared.Bin\OptimaJet.Workflow.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="OptimaJet.Workflow.DbPersistence, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3d29392dccd464d7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Element.Shared.Bin\OptimaJet.Workflow.DbPersistence.dll</HintPath>
+    </Reference>
+    <Reference Include="PDFLibNet, Version=1.0.6.8, Culture=neutral, PublicKeyToken=26d87f7d66fb2aee, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Element.Shared.Bin\PDFLibNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\ComboBoxMgr.cs" />
+    <Compile Include="Auth\AuthMgr.cs" />
+    <Compile Include="Common\CommonCodeMgr.cs" />
+    <Compile Include="Common\ConfigMgr.cs" />
+    <Compile Include="Common\MailMgr.cs" />
+    <Compile Include="Common\ExternalScheduleMgr.cs" />
+    <Compile Include="Common\LogMgr.cs" />
+    <Compile Include="Common\MessageBoxMgr.cs" />
+    <Compile Include="Common\MsgMgr.cs" />
+    <Compile Include="Common\ScheduledWorkItemMgr.cs" />
+    <Compile Include="Common\ThumbnailMgr.cs" />
+    <Compile Include="Common\UserMgr.cs" />
+    <Compile Include="Common\DataLoaderCivil.cs" />
+    <Compile Include="Common\ImportHistoryMgr.cs" />
+    <Compile Include="Common\MTOImportHelper.cs" />
+    <Compile Include="GlobalSettings\CompanyMgr.cs" />
+    <Compile Include="GlobalSettings\ComponentCustomFieldMgr.cs" />
+    <Compile Include="GlobalSettings\ComponentMgr.cs" />
+    <Compile Include="GlobalSettings\ComponentProgressMgr.cs" />
+    <Compile Include="GlobalSettings\ComponentReferenceDrawingMgr.cs" />
+    <Compile Include="GlobalSettings\ConsumableMgr.cs" />
+    <Compile Include="GlobalSettings\PermissionMgr.cs" />
+    <Compile Include="GlobalSettings\MaterialCustomFieldMgr.cs" />
+    <Compile Include="GlobalSettings\ProgressTypeMgr.cs" />
+    <Compile Include="GlobalSettings\ProjectUserDisciplineMgr.cs" />
+    <Compile Include="GlobalSettings\SigmaJobMgr.cs" />
+    <Compile Include="GlobalSettings\SigmaRoleMgr.cs" />
+    <Compile Include="GlobalSettings\SigmaUserMgr.cs" />
+    <Compile Include="GlobalSettings\TaskCategoryMgr.cs" />
+    <Compile Include="ProjectData\AssignCostCodeMgr.cs" />
+    <Compile Include="ProjectData\ImportDrawingMgr.cs" />
+    <Compile Include="ProjectData\DrawingMgr.cs" />
+    <Compile Include="ProjectData\ImportDrawing.cs" />
+    <Compile Include="ProjectData\MemberMgr.cs" />
+    <Compile Include="GlobalSettings\CostCodeMgr.cs" />
+    <Compile Include="GlobalSettings\CustomFieldMgr.cs" />
+    <Compile Include="GlobalSettings\EquipmentCustomFieldMgr.cs" />
+    <Compile Include="GlobalSettings\EquipmentMgr.cs" />
+    <Compile Include="GlobalSettings\FileStoreMgr.cs" />
+    <Compile Include="GlobalSettings\MaterialMgr.cs" />
+    <Compile Include="GlobalSettings\SigmaCodeMgr.cs" />
+    <Compile Include="GlobalSettings\UploadedFileInfoMgr.cs" />
+    <Compile Include="ProjectData\ImportCivilMgr.cs" />
+    <Compile Include="ProjectData\ScheduleMgr.cs" />
+    <Compile Include="ProjectSettings\IwpViewerMgr.cs" />
+    <Compile Include="ProjectSettings\CWAMgr.cs" />
+    <Compile Include="ProjectSettings\PersonnelMgr.cs" />
+    <Compile Include="ProjectData\ImportMgr.cs" />
+    <Compile Include="ProjectSettings\ProjectMgr.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="TrueTask\Assemble.cs" />
+    <Compile Include="TrueTask\Brass.cs" />
+    <Compile Include="TrueTask\Build.cs" />
+    <Compile Include="TrueTask\Common.cs" />
+    <Compile Include="TrueTask\DAHelper.cs" />
+    <Compile Include="TrueTask\DataSync.cs" />
+    <Compile Include="TrueTask\DTOHelper.cs" />
+    <Compile Include="TrueTask\EmptyClass.cs" />
+    <Compile Include="TrueTask\P6Manager.cs" />
+    <Compile Include="TrueTask\TimeProgress.cs" />
+    <Compile Include="TrueTask\Viewer.cs" />
+    <Compile Include="Types\Auth\TypeUserInfo.cs" />
+    <Compile Include="Types\Common\TypeExternalSchedule.cs" />
+    <Compile Include="Types\Common\TypeMessageBox.cs" />
+    <Compile Include="Types\Common\TypeScheduledWorkItem.cs" />
+    <Compile Include="Types\Common\TypeSigmaLog.cs" />
+    <Compile Include="Types\Common\TypeSigmaMsg.cs" />
+    <Compile Include="Types\Common\TypeComboBox.cs" />
+    <Compile Include="Types\Auth\TypeUserAuth.cs" />
+    <Compile Include="Types\Common\TypeSigmaCode.cs" />
+    <Compile Include="Types\Common\TypeTransition.cs" />
+    <Compile Include="Types\Common\TypeWorkflowScheme.cs" />
+    <Compile Include="Types\GlobalSettings\TypeComponentReferenceDrawing.cs" />
+    <Compile Include="Types\GlobalSettings\TypeConsumable.cs" />
+    <Compile Include="Types\GlobalSettings\TypeProgressTypeMap.cs" />
+    <Compile Include="Types\GlobalSettings\TypeSigmaJob.cs" />
+    <Compile Include="Types\GlobalSettings\TypeSigmaRoleSigmaJob.cs" />
+    <Compile Include="Types\GlobalSettings\TypeCompany.cs" />
+    <Compile Include="Types\GlobalSettings\TypeComponentCustomField.cs" />
+    <Compile Include="Types\GlobalSettings\TypeEquipment.cs" />
+    <Compile Include="Types\GlobalSettings\TypeEquipmentCustomField.cs" />
+    <Compile Include="Types\GlobalSettings\TypeFileStore.cs" />
+    <Compile Include="Types\GlobalSettings\TypeImportHistory.cs" />
+    <Compile Include="Types\GlobalSettings\TypeMaterialInfo.cs" />
+    <Compile Include="Types\GlobalSettings\TypeCustomField.cs" />
+    <Compile Include="Types\GlobalSettings\TypeComponent.cs" />
+    <Compile Include="Types\GlobalSettings\TypeComponentProgress.cs" />
+    <Compile Include="Types\GlobalSettings\TypeProgressStep.cs" />
+    <Compile Include="Types\GlobalSettings\TypeProgressType.cs" />
+    <Compile Include="Types\GlobalSettings\TypeSigmaCode.cs" />
+    <Compile Include="Types\GlobalSettings\TypeSigmaCodeCategory.cs" />
+    <Compile Include="Types\GlobalSettings\TypeSigmaRole.cs" />
+    <Compile Include="Types\GlobalSettings\TypeSigmaUser.cs" />
+    <Compile Include="Types\GlobalSettings\TypeTaskCategory.cs" />
+    <Compile Include="Types\GlobalSettings\TypeTaskType.cs" />
+    <Compile Include="Types\GlobalSettings\TypeUploadedFileInfo.cs" />
+    <Compile Include="Types\MTO\TypeMTO.cs" />
+    <Compile Include="Types\ProjectData\TypeAssignmentCostCode.cs" />
+    <Compile Include="Types\ProjectData\TypeDrawing.cs" />
+    <Compile Include="Types\GlobalSettings\TypeMaterial.cs" />
+    <Compile Include="Types\GlobalSettings\TypeMaterialCustomField.cs" />
+    <Compile Include="Types\ProjectData\TypeImportedSchedule.cs" />
+    <Compile Include="Types\ProjectSettings\TypeCWA.cs" />
+    <Compile Include="Types\ProjectSettings\TypeCWP.cs" />
+    <Compile Include="Types\ProjectSettings\TypeMember.cs" />
+    <Compile Include="Types\ProjectSettings\TypeProject.cs" />
+    <Compile Include="Types\ProjectSettings\TypeProjectDiscipline.cs" />
+    <Compile Include="Types\ProjectSettings\TypeProjectLocation.cs" />
+    <Compile Include="Types\ProjectSettings\TypeProjectSubcontractor.cs" />
+    <Compile Include="Types\ProjectSettings\TypeProjectUserDiscipline.cs" />
+    <Compile Include="Types\GlobalSettings\TypeSigmaUserSigmaRole.cs" />
+    <Compile Include="Types\ProjectSettings\TypeClientCostCode.cs" />
+    <Compile Include="Types\ProjectSettings\TypeCostCodeMap.cs" />
+    <Compile Include="Types\ProjectSettings\TypePersonnel.cs" />
+    <Compile Include="Types\GlobalSettings\TypeCostCode.cs" />
+    <Compile Include="Types\ProjectSettings\TypeProjectCostCode.cs" />
+    <Compile Include="Web References\P6WS.ActivityService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\P6WS.AuthenticationService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\P6WS.CalendarService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\P6WS.ProjectService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\P6WS.WBSService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\WorkflowActionsMgr.cs" />
+    <Compile Include="Workflow\WorkflowInitMgr.cs" />
+    <Compile Include="Workflow\WorkflowMgr.cs" />
+    <Compile Include="Workflow\WorkflowRoleMgr.cs" />
+    <Compile Include="Workflow\WorkflowRuleMgr.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\Activity.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\ActivityCodeAssignment.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\ActivityExpense.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\ActivityNote.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\ActivityOwner.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\ActivityPeriodActual.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\ActivityService.wsdl" />
+    <None Include="Web References\P6WS.ActivityService\ActivityService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\ActivityStep.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\ActivityStepTemplate.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\ActivityStepTemplateItem.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\CreateActivityCodeAssignmentsResponseObjectId.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\CreateActivityPeriodActualsResponseObjectId.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\CreateResourceAssignmentPeriodActualsResponseObjectId.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\DeleteActivitiesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\DeleteActivityCodeAssignmentsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\DeleteActivityExpensesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\DeleteActivityNotesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\DeleteActivityPeriodActualsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\DeleteActivityStepsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\DeleteRelationshipsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\DeleteResourceAssignmentPeriodActualsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\DeleteResourceAssignmentsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\Relationship.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\ResourceAssignment.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\ResourceAssignmentPeriodActual.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\UpdateActivitiesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\UpdateActivityCodeAssignmentsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\UpdateActivityExpensesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\UpdateActivityNotesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\UpdateActivityPeriodActualsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\UpdateActivityStepsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\UpdateRelationshipsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\UpdateResourceAssignmentPeriodActualsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ActivityService\UpdateResourceAssignmentsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.AuthenticationService\AuthenticationService.wsdl" />
+    <None Include="Web References\P6WS.AuthenticationService\AuthenticationService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\P6WS.AuthenticationService\LoginResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.AuthenticationService\LogoutResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.AuthenticationService\ReadDatabaseInstancesResponseDatabaseInstance.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.AuthenticationService\ReadSessionPropertiesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.AuthenticationService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\P6WS.AuthenticationService\UpdateSessionPropertiesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\Calendar.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\CalendarService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\CostAccount.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\Currency.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\DeleteCalendarsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\DeleteCostAccountsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\DeleteCurrenciesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\DeleteDocumentsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\DeleteFinancialPeriodsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\DeleteFundingSourcesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\DeleteOBSResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\Document.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\FinancialPeriod.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\FundingSource.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\GlobalPreferences.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\GlobalService.wsdl" />
+    <None Include="Web References\P6WS.CalendarService\Methodology.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\OBS.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\UpdateCalendarsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\UpdateCostAccountsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\UpdateCurrenciesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\UpdateDocumentsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\UpdateFinancialPeriodsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\UpdateFundingSourcesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\UpdateGlobalPreferencesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.CalendarService\UpdateOBSResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\BaselineProject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\CalculateProjectScoreResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\ConvertProjectToBaselineResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\CopyProjectAsBaselineResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\CopyProjectAsReflectionResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\CopyProjectResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\CreateProjectCodeAssignmentsResponseObjectId.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\CreateProjectResourceQuantitiesResponseObjectId.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\DeleteBaselineProjectsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\DeleteProjectBudgetChangeLogsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\DeleteProjectCodeAssignmentsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\DeleteProjectDocumentsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\DeleteProjectEstimatesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\DeleteProjectFundingsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\DeleteProjectIssuesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\DeleteProjectNotesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\DeleteProjectPortfoliosResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\DeleteProjectResourceQuantitiesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\DeleteProjectResourcesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\DeleteProjectRisksResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\DeleteProjectSpendingPlansResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\DeleteProjectsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\DeleteProjectThresholdsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\DeleteWBSMilestonesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\DeleteWBSResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\IssueHistory.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\LockProjectResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\Project.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\ProjectBudgetChangeLog.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\ProjectCodeAssignment.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\ProjectDocument.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\ProjectEstimate.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\ProjectFunding.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\ProjectIssue.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\ProjectNote.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\ProjectPortfolio.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\ProjectResource.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\ProjectResourceQuantity.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\ProjectRisk.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\ProjectService.wsdl" />
+    <None Include="Web References\P6WS.ProjectService\ProjectService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\ProjectSpendingPlan.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\ProjectThreshold.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\RestoreBaselineProjectResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\ScheduleOptions.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\UnlockProjectResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\UpdateBaselineProjectsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\UpdateProjectBudgetChangeLogsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\UpdateProjectCodeAssignmentsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\UpdateProjectDocumentsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\UpdateProjectEstimatesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\UpdateProjectFundingsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\UpdateProjectIssuesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\UpdateProjectNotesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\UpdateProjectPortfoliosResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\UpdateProjectResourceQuantitiesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\UpdateProjectResourcesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\UpdateProjectRisksResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\UpdateProjectSpendingPlansResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\UpdateProjectsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\UpdateProjectThresholdsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\UpdateScheduleOptionsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\UpdateWBSMilestonesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\UpdateWBSResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\WBS.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.ProjectService\WBSMilestone.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\BaselineProject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\CalculateProjectScoreResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\ConvertProjectToBaselineResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\CopyProjectAsBaselineResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\CopyProjectAsReflectionResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\CopyProjectResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\CreateProjectCodeAssignmentsResponseObjectId.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\CreateProjectResourceQuantitiesResponseObjectId.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\DeleteBaselineProjectsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\DeleteProjectBudgetChangeLogsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\DeleteProjectCodeAssignmentsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\DeleteProjectDocumentsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\DeleteProjectEstimatesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\DeleteProjectFundingsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\DeleteProjectIssuesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\DeleteProjectNotesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\DeleteProjectPortfoliosResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\DeleteProjectResourceQuantitiesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\DeleteProjectResourcesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\DeleteProjectRisksResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\DeleteProjectSpendingPlansResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\DeleteProjectsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\DeleteProjectThresholdsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\DeleteWBSMilestonesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\DeleteWBSResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\IssueHistory.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\LockProjectResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\Project.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\ProjectBudgetChangeLog.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\ProjectCodeAssignment.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\ProjectDocument.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\ProjectEstimate.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\ProjectFunding.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\ProjectIssue.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\ProjectNote.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\ProjectPortfolio.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\ProjectResource.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\ProjectResourceQuantity.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\ProjectRisk.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\ProjectService.wsdl" />
+    <None Include="Web References\P6WS.WBSService\ProjectSpendingPlan.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\ProjectThreshold.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\P6WS.WBSService\RestoreBaselineProjectResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\ScheduleOptions.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\UnlockProjectResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\UpdateBaselineProjectsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\UpdateProjectBudgetChangeLogsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\UpdateProjectCodeAssignmentsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\UpdateProjectDocumentsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\UpdateProjectEstimatesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\UpdateProjectFundingsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\UpdateProjectIssuesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\UpdateProjectNotesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\UpdateProjectPortfoliosResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\UpdateProjectResourceQuantitiesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\UpdateProjectResourcesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\UpdateProjectRisksResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\UpdateProjectSpendingPlansResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\UpdateProjectsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\UpdateProjectThresholdsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\UpdateScheduleOptionsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\UpdateWBSMilestonesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\UpdateWBSResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\WBS.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\WBSMilestone.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\P6WS.WBSService\WBSService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Element.Shared.Common\Element.Shared.Common.csproj">
+      <Project>{863ba6e2-6940-4c33-9b30-061d5a3a7c88}</Project>
+      <Name>Element.Shared.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\element-reveal-datalibrary\Element.Reveal.DataLibrary.csproj">
+      <Project>{28800864-79a5-4151-bf2c-320d7e3e2190}</Project>
+      <Name>Element.Reveal.DataLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Element.Sigma.Common\Element.Sigma.Common.csproj">
+      <Project>{8d8c7a35-ad41-4e21-a4e2-8acf4afacee9}</Project>
+      <Name>Element.Sigma.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://192.168.101.107:8091/p6ws/services/ActivityService%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\P6WS.ActivityService\</RelPath>
+      <UpdateFromURL>http://192.168.101.107:8091/p6ws/services/ActivityService%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Element_Sigma_Web_Biz_P6WS_ActivityService_ActivityStepTemplateService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.101.107:8091/p6ws/services/AuthenticationService%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\P6WS.AuthenticationService\</RelPath>
+      <UpdateFromURL>http://192.168.101.107:8091/p6ws/services/AuthenticationService%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Element_Sigma_Web_Biz_P6WS_AuthenticationService_AuthenticationService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.101.107:8091/p6ws/services/CalendarService%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\P6WS.CalendarService\</RelPath>
+      <UpdateFromURL>http://192.168.101.107:8091/p6ws/services/CalendarService%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Element_Sigma_Web_Biz_P6WS_CalendarService_GlobalPreferencesService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.101.107:8091/p6ws/services/ProjectService%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\P6WS.ProjectService\</RelPath>
+      <UpdateFromURL>http://192.168.101.107:8091/p6ws/services/ProjectService%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Element_Sigma_Web_Biz_P6WS_ProjectService_ProjectDocumentService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.101.107:8091/p6ws/services/WBSService%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\P6WS.WBSService\</RelPath>
+      <UpdateFromURL>http://192.168.101.107:8091/p6ws/services/WBSService%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Element_Sigma_Web_Biz_P6WS_WBSService_ProjectDocumentService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

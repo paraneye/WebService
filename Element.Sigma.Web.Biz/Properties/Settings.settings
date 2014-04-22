@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Element.Sigma.Web.Biz.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Element_Sigma_Web_Biz_P6WS_ActivityService_ActivityStepTemplateService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.101.107:8091/p6ws/services/ActivityStepTemplateService</Value>
+    </Setting>
+    <Setting Name="Element_Sigma_Web_Biz_P6WS_AuthenticationService_AuthenticationService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.101.107:8091/p6ws/services/AuthenticationService</Value>
+    </Setting>
+    <Setting Name="Element_Sigma_Web_Biz_P6WS_ProjectService_ProjectDocumentService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.101.107:8091/p6ws/services/ProjectDocumentService</Value>
+    </Setting>
+    <Setting Name="Element_Sigma_Web_Biz_P6WS_WBSService_ProjectDocumentService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.101.107:8091/p6ws/services/ProjectDocumentService</Value>
+    </Setting>
+    <Setting Name="Element_Sigma_Web_Biz_P6WS_CalendarService_GlobalPreferencesService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.101.107:8091/p6ws/services/GlobalPreferencesService</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Element.Sigma.Web.Service.Common.Workflow" CodeBehind="Workflow.svc.cs" %>
