@@ -854,7 +854,7 @@
       <Project>{863ba6e2-6940-4c33-9b30-061d5a3a7c88}</Project>
       <Name>Element.Shared.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\element-reveal-datalibrary\Element.Reveal.DataLibrary.csproj">
+    <ProjectReference Include="..\..\DataLibrary\Element.Reveal.DataLibrary.csproj">
       <Project>{28800864-79a5-4151-bf2c-320d7e3e2190}</Project>
       <Name>Element.Reveal.DataLibrary</Name>
     </ProjectReference>
